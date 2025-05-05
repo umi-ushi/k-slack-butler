@@ -13,10 +13,9 @@ repositories {
 val slackClientVersion = "1.45.3"
 
 dependencies {
-    implementation("com.slack.api:slack-api-client:$slackClientVersion")
-    implementation("com.slack.api:bolt:$slackClientVersion")
-    implementation("com.slack.api:bolt-servlet:$slackClientVersion")
-    implementation("com.slack.api:bolt-socket-mode:$slackClientVersion")
+    implementation("com.slack.api:bolt-jetty:$slackClientVersion")
+
+    implementation("org.slf4j:slf4j-simple:1.7.36")
 
     testImplementation(kotlin("test"))
 }

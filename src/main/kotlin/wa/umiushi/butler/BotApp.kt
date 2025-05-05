@@ -1,16 +1,19 @@
 package wa.umiushi.butler
 
 import com.slack.api.bolt.App
-
-val SLACK_BOT_TOKEN = System.getenv("SLACK_BOT_TOKEN")
+import com.slack.api.bolt.context.builtin.SlashCommandContext
+import com.slack.api.bolt.jetty.SlackAppServer
+import com.slack.api.bolt.request.builtin.SlashCommandRequest
 
 fun main() {
-    println("Bot running.....")
     val app = App()
-    app.client.chatPostMessage {
-        it.token(SLACK_BOT_TOKEN)
-        it.channel("C08R4UQS57T")
-        it.text("Hello World!!")
+
+    app.command(
+        "/hello"
+    ) { _: SlashCommandRequest?, ctx: SlashCommandContext? ->
+        ctx!!.ack(":candy: はい、アメちゃん！")
     }
-    println("Bot closed.....")
+
+    val server = SlackAppServer(app)
+    server.start()
 }
