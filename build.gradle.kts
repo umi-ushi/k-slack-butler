@@ -1,6 +1,10 @@
+import org.gradle.kotlin.dsl.implementation
+
 plugins {
     kotlin("jvm") version "2.1.20"
-    application
+    kotlin("plugin.spring") version "1.9.25"
+    id("org.springframework.boot") version "3.4.5"
+    id("io.spring.dependency-management") version "1.1.7"
 }
 
 group = "wa.umiushi"
@@ -10,12 +14,9 @@ repositories {
     mavenCentral()
 }
 
-val slackClientVersion = "1.45.3"
-
 dependencies {
-    implementation("com.slack.api:bolt-jetty:$slackClientVersion")
-
-    implementation("org.slf4j:slf4j-simple:1.7.36")
+    implementation("org.springframework.boot:spring-boot-starter-web")
+    implementation("com.slack.api:bolt-jakarta-servlet:1.45.3")
 
     testImplementation(kotlin("test"))
 }
@@ -25,8 +26,4 @@ tasks.test {
 }
 kotlin {
     jvmToolchain(21)
-}
-
-application {
-    mainClass = "wa.umiushi.butler.BotAppKt"
 }
