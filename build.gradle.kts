@@ -27,3 +27,10 @@ tasks.test {
 kotlin {
     jvmToolchain(21)
 }
+
+tasks.bootBuildImage {
+    imageName = "imumiushi/k-slack-butler:latest"
+
+    builder = "paketobuildpacks/builder-jammy-java-tiny:latest"
+    imagePlatform = "linux/amd64"
+}
