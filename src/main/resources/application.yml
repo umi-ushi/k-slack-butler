@@ -2,3 +2,8 @@ logging.level:
   com.slack.api: DEBUG
 server:
   port: 3000
+
+api:
+  github:
+    owner: "umi-ushi"
+    token: ${GITHUB_TOKEN}

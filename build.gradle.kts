@@ -17,6 +17,7 @@ repositories {
 dependencies {
     implementation("org.springframework.boot:spring-boot-starter-web")
     implementation("com.slack.api:bolt-jakarta-servlet:1.45.3")
+    implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
 
     testImplementation(kotlin("test"))
 }
